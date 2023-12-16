@@ -1,3 +1,9 @@
+import { Auth } from "../../modules"
+
 export const AuthPage = () => {
-  return <div>Auth Page</div>
+  return (
+    <div>
+      <Auth />
+    </div>
+  )
 }
