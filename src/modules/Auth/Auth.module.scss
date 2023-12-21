@@ -1,3 +1,11 @@
+$blue-color: #5458ea;
+
+@mixin AlignmentBgImg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .auth {
   position: relative;
   display: grid;
@@ -8,9 +16,7 @@
     width: 100%;
     height: 100vh;
     background: url("../../assets/images/authBg.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    @include AlignmentBgImg();
 
     &::after {
       content: "";
@@ -25,9 +31,7 @@
 
     &::before {
       background-image: url("../../assets/images/shoppingCart.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+      @include AlignmentBgImg();
       width: 231px;
       height: 258px;
       content: "";
@@ -54,6 +58,18 @@
 
       .passInput {
         margin-bottom: 16px;
+      }
+
+      .forgotPassLink {
+        margin-top: 16px;
+        text-decoration: none;
+        color: $blue-color;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        cursor: pointer;
       }
     }
   }

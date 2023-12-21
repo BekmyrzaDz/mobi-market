@@ -10,6 +10,7 @@ import { loginSchema } from "./Schema/Validation"
 import { ILogin } from "./types"
 import { useAppDispatch } from "../../hooks/redux"
 import { login } from "./redux/asyncActions"
+import { Link } from "react-router-dom"
 
 export const Auth = () => {
   const dispatch = useAppDispatch()
@@ -31,9 +32,6 @@ export const Auth = () => {
   function onSubmit(values: ILogin) {
     dispatch(login(values))
   }
-  // function onSubmit() {
-  //   console.log("Request")
-  // }
 
   return (
     <div className={styles.auth}>
@@ -69,6 +67,9 @@ export const Auth = () => {
                 inputValue={password}
                 onChangeHandle={handlePasswordChange}
               />
+              <Link className={styles.forgotPassLink} to={"/"}>
+                Забыли пароль
+              </Link>
             </Form>
           </div>
         </Formik>
