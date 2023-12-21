@@ -2,14 +2,23 @@ import { ChangeEvent, useState } from "react"
 import { Form, Formik } from "formik"
 import clsx from "clsx"
 import { eye } from "../../assets"
+import { eyeDisable } from "../../assets"
 import styles from "./Auth.module.scss"
 import { Input } from "../../components"
 import { loginState } from "./State/State"
 import { loginSchema } from "./Schema/Validation"
+import { ILogin } from "./types"
+import { useAppDispatch } from "../../hooks/redux"
+import { login } from "./redux/asyncActions"
 
 export const Auth = () => {
+  const dispatch = useAppDispatch()
+
   const [username, setUsername] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+
+  const [showPassword, setShowPassword] = useState(false)
+  const toggleShowPassword = () => setShowPassword(!showPassword)
 
   const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value)
@@ -19,12 +28,12 @@ export const Auth = () => {
     setPassword(event.target.value)
   }
 
-  // function onSubmit(values: ILogin) {
-  //   dispatch(login(values))
-  // }
-  function onSubmit() {
-    console.log("Request")
+  function onSubmit(values: ILogin) {
+    dispatch(login(values))
   }
+  // function onSubmit() {
+  //   console.log("Request")
+  // }
 
   return (
     <div className={styles.auth}>
@@ -41,7 +50,6 @@ export const Auth = () => {
                 className={clsx(styles.input)}
                 name="username"
                 type="text"
-                // passwordIcon={eye}
                 label="Имя пользователя"
                 placeholder="Имя пользователя"
                 username={username}
@@ -51,9 +59,10 @@ export const Auth = () => {
               <Input
                 className={clsx(styles.passInput)}
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
-                // passwordIcon={eye}
+                passwordIcon={showPassword ? eye : eyeDisable}
+                toggleShowPassword={toggleShowPassword}
                 label="Пароль"
                 placeholder="Пароль"
                 password={password}
