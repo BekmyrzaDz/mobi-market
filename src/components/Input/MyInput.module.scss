@@ -1,15 +1,16 @@
 // Variables
-$black-color: #000;
-$white-color: #fff;
-$green-color: #32b483;
-$gray-color: #aaaaaa;
-$count-gray-color: #f5f5f5;
-$pink-color: #c656a0;
-$violet-color: #756fb3;
-$error-color: #e53e3e;
-$notification-color: #ed474a;
-$auth-black-color: #252525;
-$body-gray-color: #f1f1f1;
+$black-color: #494949;
+$gray-color: #c0c0c0;
+$error-color: #f34545;
+
+// Input typography mixin
+@mixin Typography {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
 .wrapper {
   position: relative;
@@ -17,9 +18,8 @@ $body-gray-color: #f1f1f1;
   flex-direction: column;
 
   .label {
-    font-style: normal;
+    @include Typography();
     font-weight: 600;
-    font-size: 12px;
     line-height: 19px;
     color: transparent;
 
@@ -32,22 +32,13 @@ $body-gray-color: #f1f1f1;
 
   .highlight {
     top: -10px;
-    color: #c0c0c0;
-    font-family: Inter;
+    color: $gray-color;
+
+    @include Typography();
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 120%;
   }
-}
-
-.inputWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.icon {
-  margin-right: 12px;
 }
 
 .input {
@@ -56,35 +47,19 @@ $body-gray-color: #f1f1f1;
   height: 36px;
   padding: 4px 0px;
   border: none;
-  border-bottom: 0.5px solid #c0c0c0;
+  border-bottom: 0.5px solid $gray-color;
   outline: none;
   background-color: transparent;
 
-  color: #494949;
-  font-family: Inter;
+  @include Typography();
+  color: $black-color;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
-// .input:focus + label {
-//   top: -20px;
-//   color: #c0c0c0;
-//   font-family: Inter;
-//   font-size: 14px;
-//   font-style: normal;
-//   font-weight: 400;
-//   line-height: 120%;
-// }
-
 ::placeholder {
-  color: #c0c0c0;
-  font-family: Inter;
+  @include Typography();
+  color: $gray-color;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .error {
