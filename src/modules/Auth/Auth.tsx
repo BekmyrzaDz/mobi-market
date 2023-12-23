@@ -4,7 +4,7 @@ import clsx from "clsx"
 import { eye } from "../../assets"
 import { eyeDisable } from "../../assets"
 import styles from "./Auth.module.scss"
-import { Input } from "../../components"
+import { Button, Input } from "../../components"
 import { loginState } from "./State/State"
 import { loginSchema } from "./Schema/Validation"
 import { ILogin } from "./types"
@@ -70,6 +70,10 @@ export const Auth = () => {
               <Link className={styles.forgotPassLink} to={"/"}>
                 Забыли пароль
               </Link>
+              <Button className={styles.loginButton}>Войти</Button>
+              <Button className={styles.signUpButton}>
+                Зарегистрироваться
+              </Button>
             </Form>
           </div>
         </Formik>

@@ -1,4 +1,14 @@
 $blue-color: #5458ea;
+$white-color: #ffffff;
+
+@mixin Typography {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  cursor: pointer;
+}
 
 @mixin AlignmentBgImg {
   background-repeat: no-repeat;
@@ -26,7 +36,11 @@ $blue-color: #5458ea;
       bottom: 0;
       right: 0;
       z-index: 2;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        $white-color 100%
+      );
     }
 
     &::before {
@@ -64,12 +78,25 @@ $blue-color: #5458ea;
         margin-top: 16px;
         text-decoration: none;
         color: $blue-color;
-        font-family: Inter;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 120%;
         cursor: pointer;
+
+        @include Typography();
+      }
+
+      .loginButton {
+        width: 100%;
+        margin-top: 50px;
+        padding: 10px;
+      }
+
+      .signUpButton {
+        margin-top: 183px;
+        width: 100%;
+        padding: 10px;
+        background-color: transparent;
+        color: $blue-color;
+
+        @include Typography();
       }
     }
   }
