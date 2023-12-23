@@ -71,9 +71,11 @@ export const Auth = () => {
                 Забыли пароль
               </Link>
               <Button className={styles.loginButton}>Войти</Button>
-              <Button className={styles.signUpButton}>
-                <Link to={"/sign-up"}>Зарегистрироваться</Link>
-              </Button>
+              <Link className={styles.signUpLink} to={"/sign-up"}>
+                <Button className={styles.signUpButton}>
+                  Зарегистрироваться
+                </Button>
+              </Link>
             </Form>
           </div>
         </Formik>

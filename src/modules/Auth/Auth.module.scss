@@ -89,15 +89,15 @@ $white-color: #ffffff;
         padding: 10px;
       }
 
-      .signUpButton {
-        margin-top: 183px;
-        width: 100%;
-        padding: 10px;
-        background-color: transparent;
+      .signUpLink {
+        text-decoration: none;
 
-        & > a {
+        .signUpButton {
+          margin-top: 183px;
+          width: 100%;
+          padding: 10px;
+          background-color: transparent;
           color: $blue-color;
-          text-decoration: none;
 
           @include Typography();
         }
