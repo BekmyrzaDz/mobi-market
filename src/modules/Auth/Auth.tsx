@@ -67,12 +67,12 @@ export const Auth = () => {
                 inputValue={password}
                 onChangeHandle={handlePasswordChange}
               />
-              <Link className={styles.forgotPassLink} to={"/"}>
+              <Link className={styles.forgotPassLink} to={"/forgot-password"}>
                 Забыли пароль
               </Link>
               <Button className={styles.loginButton}>Войти</Button>
               <Button className={styles.signUpButton}>
-                Зарегистрироваться
+                <Link to={"/sign-up"}>Зарегистрироваться</Link>
               </Button>
             </Form>
           </div>

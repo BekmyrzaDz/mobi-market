@@ -94,9 +94,13 @@ $white-color: #ffffff;
         width: 100%;
         padding: 10px;
         background-color: transparent;
-        color: $blue-color;
 
-        @include Typography();
+        & > a {
+          color: $blue-color;
+          text-decoration: none;
+
+          @include Typography();
+        }
       }
     }
   }
