@@ -1,7 +1,7 @@
 import * as Yup from "yup"
 
 // Login Schema
-export const loginSchema = Yup.object({
+export const loginSchema = Yup.object().shape({
   username: Yup.string()
     .min(2, "Слишком короткое имя!")
     .max(50, "Слишком длинное имя!")

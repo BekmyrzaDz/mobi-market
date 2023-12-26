@@ -63,7 +63,7 @@ $white-color: #ffffff;
     justify-content: center;
     align-items: center;
 
-    .formWrapper {
+    .form {
       width: 335px;
 
       .input {
@@ -83,10 +83,17 @@ $white-color: #ffffff;
         @include Typography();
       }
 
-      .loginButton {
+      .loginDefaultButton {
         width: 100%;
         margin-top: 50px;
         padding: 10px;
+      }
+
+      .loginButton {
+        width: 100%;
+        padding: 10px;
+        background-color: $blue-color;
+        color: $white-color;
       }
 
       .signUpLink {

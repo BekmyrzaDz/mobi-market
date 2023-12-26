@@ -7,10 +7,6 @@ export interface InputProps
   > {
   label: string
   name: string
-  username?: string
-  password?: string
-  inputValue?: string
-  onChangeHandle?: any
   icon?: string
   passwordIcon?: string
   toggleShowPassword?: any

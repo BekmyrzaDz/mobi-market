@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from "react"
+import { useState } from "react"
 import { Form, Formik } from "formik"
 import clsx from "clsx"
+import { Link } from "react-router-dom"
 import { eye } from "../../assets"
 import { eyeDisable } from "../../assets"
 import styles from "./Auth.module.scss"
@@ -10,24 +11,12 @@ import { loginSchema } from "./Schema/Validation"
 import { ILogin } from "./types"
 import { useAppDispatch } from "../../hooks/redux"
 import { login } from "./redux/asyncActions"
-import { Link } from "react-router-dom"
 
 export const Auth = () => {
   const dispatch = useAppDispatch()
 
-  const [username, setUsername] = useState<string>("")
-  const [password, setPassword] = useState<string>("")
-
-  const [showPassword, setShowPassword] = useState(false)
-  const toggleShowPassword = () => setShowPassword(!showPassword)
-
-  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value)
-  }
-
-  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value)
-  }
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const toggleShowPassword = (): void => setShowPassword(!showPassword)
 
   function onSubmit(values: ILogin) {
     dispatch(login(values))
@@ -41,18 +30,17 @@ export const Auth = () => {
           initialValues={loginState}
           validationSchema={loginSchema}
           onSubmit={onSubmit}
+          enableReinitialize={true}
+          validateOnChange={false}
         >
-          <div className={styles.formWrapper}>
-            <Form className={styles.form}>
+          {({ isValid, errors, touched, handleSubmit }) => (
+            <Form className={styles.form} onSubmit={handleSubmit}>
               <Input
                 className={clsx(styles.input)}
                 name="username"
                 type="text"
                 label="Имя пользователя"
                 placeholder="Имя пользователя"
-                username={username}
-                inputValue={username}
-                onChangeHandle={handleUsernameChange}
               />
               <Input
                 className={clsx(styles.passInput)}
@@ -63,21 +51,31 @@ export const Auth = () => {
                 toggleShowPassword={toggleShowPassword}
                 label="Пароль"
                 placeholder="Пароль"
-                password={password}
-                inputValue={password}
-                onChangeHandle={handlePasswordChange}
               />
               <Link className={styles.forgotPassLink} to={"/forgot-password"}>
                 Забыли пароль
               </Link>
-              <Button className={styles.loginButton}>Войти</Button>
+              <Button
+                className={clsx({
+                  [styles.loginDefaultButton]: true,
+                  [styles.loginButton]:
+                    !errors.username &&
+                    !errors.password &&
+                    touched.username &&
+                    touched.password,
+                })}
+                type="submit"
+                disabled={!isValid}
+              >
+                Войти
+              </Button>
               <Link className={styles.signUpLink} to={"/sign-up"}>
                 <Button className={styles.signUpButton}>
                   Зарегистрироваться
                 </Button>
               </Link>
             </Form>
-          </div>
+          )}
         </Formik>
       </div>
     </div>

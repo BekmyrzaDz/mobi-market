@@ -8,10 +8,6 @@ import styles from "./MyInput.module.scss"
 export const Input: FC<InputProps> = ({
   className,
   label,
-  username,
-  password,
-  onChangeHandle,
-  inputValue,
   passwordIcon,
   toggleShowPassword,
   ...props
@@ -26,15 +22,11 @@ export const Input: FC<InputProps> = ({
           {...props}
           {...field}
           placeholder={props.placeholder}
-          value={inputValue}
-          onChange={onChangeHandle}
+          value={meta.value}
+          onChange={field.onChange}
         />
         <label
-          className={clsx(
-            styles.label,
-            { [styles.highlight]: username },
-            { [styles.highlight]: password }
-          )}
+          className={clsx(styles.label, { [styles.highlight]: meta.value })}
           htmlFor={props.name}
         >
           {label}
