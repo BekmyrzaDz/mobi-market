@@ -1,3 +1,3 @@
-import { Auth } from "./Auth/Auth"
+import { Auth } from "./Auth/Login/Auth"
 
 export { Auth }

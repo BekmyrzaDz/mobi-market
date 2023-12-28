@@ -15,20 +15,9 @@ export const login = createAsyncThunk<IUser, ILogin, { rejectValue: string }>(
       }
       return response
     } catch (error: unknown) {
-      if (typeof error === "string") {
-        toast.error(error)
-        return thunkAPI.rejectWithValue(error)
-      }
       if (error instanceof AxiosError) {
-        const message =
-          error.response?.data?.detail ||
-          (error.response &&
-            error.response?.data &&
-            error.response?.data?.message) ||
-          error.message ||
-          error.toString()
-        toast.error(message)
-        return thunkAPI.rejectWithValue(message)
+        toast.error("Неверный логин или пароль")
+        return thunkAPI.rejectWithValue("Неверный логин или пароль")
       }
       throw error
     }
