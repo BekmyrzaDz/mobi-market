@@ -4,6 +4,12 @@ export interface ILogin {
   password: string
 }
 
+// Register
+export interface IRegister {
+  username: string
+  email: string
+}
+
 // User (auth)
 export interface IUser {
   first_name: string

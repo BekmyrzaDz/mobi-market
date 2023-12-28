@@ -1,9 +1,11 @@
-interface ILogin {
-  username: string
-  password: string
-}
+import { IRegister, ILogin } from "../types"
 
 export const loginState: ILogin = {
   username: "",
   password: "",
+}
+
+export const registerState: IRegister = {
+  username: "",
+  email: "",
 }

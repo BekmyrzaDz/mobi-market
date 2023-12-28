@@ -1,3 +1,4 @@
-import { Auth } from "./Auth/Login/Auth"
+import { Login } from "./Auth/Login/Login"
+import { Register } from "./Auth/Register/Register"
 
-export { Auth }
+export { Login, Register }

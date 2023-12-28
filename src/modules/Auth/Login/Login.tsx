@@ -4,7 +4,7 @@ import clsx from "clsx"
 import { Link } from "react-router-dom"
 import { eye } from "../../../assets"
 import { eyeDisable } from "../../../assets"
-import styles from "./Auth.module.scss"
+import styles from "./Login.module.scss"
 import { Button, Input } from "../../../components"
 import { loginState } from "../State/State"
 import { loginSchema } from "../Schema/Validation"
@@ -12,7 +12,7 @@ import { ILogin } from "../types"
 import { useAppDispatch } from "../../../hooks/redux"
 import { login } from "../redux/asyncActions"
 
-export const Auth = () => {
+export const Login = () => {
   const dispatch = useAppDispatch()
 
   const [showPassword, setShowPassword] = useState<boolean>(false)
