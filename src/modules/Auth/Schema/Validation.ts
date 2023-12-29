@@ -12,12 +12,15 @@ export const loginSchema = Yup.object().shape({
 })
 
 // Register Schema
+const usernameRules = /^[a-zA-Zа-яА-Я\s]+$/
+
 export const registerSchema = Yup.object().shape({
   username: Yup.string()
     .min(2, "Слишком короткое имя!")
     .max(50, "Слишком длинное имя!")
+    .matches(usernameRules, { message: "Неверный логин или почта" })
     .required("Обязательное поле"),
   email: Yup.string()
-    .email("Пожалуйста введите валидный электронный адрес")
+    .email("Неверный логин или почта")
     .required("Обязательное поле"),
 })
