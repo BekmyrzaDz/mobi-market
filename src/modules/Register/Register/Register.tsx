@@ -67,6 +67,7 @@ export const Register = () => {
                       type="text"
                       label="Имя пользователя"
                       placeholder="Имя пользователя"
+                      error={errors.username}
                     />
                     <Input
                       className={clsx(styles.passInput)}
@@ -75,6 +76,7 @@ export const Register = () => {
                       id="email"
                       label="Почта"
                       placeholder="Почта"
+                      error={errors.email}
                     />
                     <Button
                       className={clsx({
@@ -116,6 +118,7 @@ export const Register = () => {
                       toggleShowPassword={toggleShowPassword}
                       label="Пароль"
                       placeholder="Пароль"
+                      error={errors.password}
                     />
                     <Input
                       className={clsx(styles.passInput)}
@@ -126,6 +129,7 @@ export const Register = () => {
                       id="confirm_password"
                       label="Повторите пароль"
                       placeholder="Повторите пароль"
+                      error={errors.confirm_password}
                     />
                     <Button
                       className={clsx({
