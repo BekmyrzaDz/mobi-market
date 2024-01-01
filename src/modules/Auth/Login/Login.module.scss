@@ -1,5 +1,6 @@
 $blue-color: #5458ea;
 $white-color: #ffffff;
+$error-color: #f34545;
 
 @mixin Typography {
   font-family: Inter;
@@ -66,7 +67,7 @@ $white-color: #ffffff;
     .form {
       width: 335px;
 
-      .input {
+      .usernameInput {
         margin-bottom: 47px;
       }
 

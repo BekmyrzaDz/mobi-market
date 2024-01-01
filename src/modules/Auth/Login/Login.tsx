@@ -36,11 +36,12 @@ export const Login = () => {
           {({ isValid, errors, touched, handleSubmit }) => (
             <Form className={styles.form} onSubmit={handleSubmit}>
               <Input
-                className={clsx(styles.input)}
+                className={clsx(styles.usernameInput)}
                 name="username"
                 type="text"
                 label="Имя пользователя"
                 placeholder="Имя пользователя"
+                error={errors.username as string}
               />
               <Input
                 className={clsx(styles.passInput)}
@@ -51,6 +52,7 @@ export const Login = () => {
                 toggleShowPassword={toggleShowPassword}
                 label="Пароль"
                 placeholder="Пароль"
+                error={errors.password as string}
               />
               <Link className={styles.forgotPassLink} to={"/forgot-password"}>
                 Забыли пароль

@@ -10,4 +10,5 @@ export interface InputProps
   icon?: string
   passwordIcon?: string
   toggleShowPassword?: any
+  error: string
 }

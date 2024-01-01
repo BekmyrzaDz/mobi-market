@@ -62,6 +62,19 @@ $error-color: #f34545;
   font-size: 16px;
 }
 
+.inputError {
+  border-color: $error-color;
+  color: $error-color;
+
+  &::placeholder {
+    color: $error-color;
+  }
+}
+
+.labelError {
+  color: $error-color !important;
+}
+
 .error {
   color: $error-color;
   position: absolute;
