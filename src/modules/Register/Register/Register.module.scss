@@ -2,6 +2,7 @@ $blue-color: #5458ea;
 $white-color: #ffffff;
 $red-color: #f34545;
 $gray-color: #c0c0c033;
+$gray-color-2: #c0c0c0;
 $black-color: #494949;
 
 @mixin Typography {
@@ -127,6 +128,38 @@ $black-color: #494949;
 
       .form {
         width: 335px;
+
+        .formTop {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 38px;
+            cursor: auto;
+          }
+
+          .formTopTitle {
+            @include Typography();
+            font-size: 20px;
+            color: $black-color;
+            margin-bottom: 8px;
+            cursor: auto;
+          }
+
+          .formTopText {
+            @include Typography();
+            font-size: 16px;
+            line-height: 120%;
+            font-weight: 400;
+            color: $gray-color-2;
+            margin-bottom: 38px;
+            text-align: center;
+            cursor: auto;
+          }
+        }
 
         .input {
           margin-bottom: 47px;

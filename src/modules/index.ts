@@ -1,4 +1,4 @@
 import { Login } from "./Auth/Login/Login"
-import { Register } from "./Auth/Register/Register"
+import { Register } from "./Register/Register/Register"
 
 export { Login, Register }

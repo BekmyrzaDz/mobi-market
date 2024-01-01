@@ -8,4 +8,6 @@ export const loginState: ILogin = {
 export const registerState: IRegister = {
   username: "",
   email: "",
+  password: "",
+  confirmPassword: "",
 }

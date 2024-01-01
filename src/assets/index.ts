@@ -4,5 +4,14 @@ import shoppingCart from "./images/shoppingCart.svg"
 import eye from "./images/eye.svg"
 import eyeDisable from "./images/eyeDisable.svg"
 import arrowLeft from "./images/arrow-left.svg"
+import hugeIcon from "./images/hugeIcon.svg"
 
-export { authBgImg, notFoundImg, shoppingCart, eye, eyeDisable, arrowLeft }
+export {
+  authBgImg,
+  notFoundImg,
+  shoppingCart,
+  eye,
+  eyeDisable,
+  arrowLeft,
+  hugeIcon,
+}
