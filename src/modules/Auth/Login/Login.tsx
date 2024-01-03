@@ -41,7 +41,6 @@ export const Login = () => {
                 type="text"
                 label="Имя пользователя"
                 placeholder="Имя пользователя"
-                error={errors.username as string}
               />
               <Input
                 className={clsx(styles.passInput)}
@@ -52,7 +51,6 @@ export const Login = () => {
                 toggleShowPassword={toggleShowPassword}
                 label="Пароль"
                 placeholder="Пароль"
-                error={errors.password as string}
               />
               <Link className={styles.forgotPassLink} to={"/forgot-password"}>
                 Забыли пароль
