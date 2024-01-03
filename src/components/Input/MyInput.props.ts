@@ -9,6 +9,5 @@ export interface InputProps
   name: string
   icon?: string
   passwordIcon?: string
-  toggleShowPassword?: any
-  error?: string
+  toggleShowPassword?: () => void
 }

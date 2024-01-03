@@ -23,3 +23,23 @@ export const login = createAsyncThunk<IUser, ILogin, { rejectValue: string }>(
     }
   }
 )
+
+// Check User Action
+export const checkUser = createAsyncThunk<
+  ILogin,
+  ILogin,
+  { rejectValue: string }
+>("auth/checkUser", async (userData: ILogin, thunkAPI) => {
+  try {
+    const response = await authService.checkUser(userData)
+    if (response) {
+      toast.error("Данный пользователь уже зарегистрирован")
+    }
+    return response
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+    throw error
+  }
+})

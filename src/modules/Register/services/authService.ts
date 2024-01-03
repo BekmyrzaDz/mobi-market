@@ -1,5 +1,5 @@
 import axios from "../../../api/axios"
-import { IRegister, IUser } from "../types/index"
+import { ICheckUser, IRegister, IUser } from "../types/index"
 
 // Register user
 const register = async (userData: IRegister): Promise<IUser> => {
@@ -11,8 +11,16 @@ const register = async (userData: IRegister): Promise<IUser> => {
   return response.data
 }
 
+// Check user
+const checkUser = async (userData: ICheckUser): Promise<ICheckUser> => {
+  const response = await axios.post("/users/check-user/", userData)
+
+  return response.data
+}
+
 const authService = {
   register,
+  checkUser,
 }
 
 export default authService

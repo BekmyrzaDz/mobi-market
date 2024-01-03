@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { register } from "./asyncActions"
-import { IRegisterState, IUser } from "../types/index"
+import { checkUser, register } from "./asyncActions"
+import { ICheckUser, IRegisterState, IUser } from "../types/index"
 
 // Get user from localStorage
 const userString = localStorage.getItem("user")
@@ -11,6 +11,7 @@ if (userString !== null) {
 
 const initialState: IRegisterState = {
   user: user ? user : null,
+  checkUser: null,
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -40,6 +41,22 @@ const registerSlice = createSlice({
         state.isLoading = false
         state.isError = true
         state.user = null
+      })
+      .addCase(checkUser.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(
+        checkUser.fulfilled,
+        (state, action: PayloadAction<ICheckUser>) => {
+          state.isLoading = false
+          state.isSuccess = true
+          state.checkUser = action.payload
+        }
+      )
+      .addCase(checkUser.rejected, (state) => {
+        state.isLoading = false
+        state.isError = true
+        state.checkUser = null
       })
   },
 })

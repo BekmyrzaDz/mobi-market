@@ -10,7 +10,6 @@ export const Input: FC<InputProps> = ({
   label,
   passwordIcon,
   toggleShowPassword,
-  error,
   ...props
 }) => {
   const [field, meta] = useField(props)
@@ -18,9 +17,7 @@ export const Input: FC<InputProps> = ({
   return (
     <div className={clsx(styles.wrapper, className)}>
       <input
-        className={clsx(styles.input, {
-          [styles.inputError]: error,
-        })}
+        className={clsx(styles.input)}
         {...props}
         {...field}
         placeholder={props.placeholder}
@@ -30,7 +27,6 @@ export const Input: FC<InputProps> = ({
       <label
         className={clsx(styles.label, {
           [styles.highlight]: meta.value,
-          [styles.labelError]: meta.value && error,
         })}
         htmlFor={props.name}
       >
