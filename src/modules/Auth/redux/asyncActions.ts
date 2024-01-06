@@ -2,7 +2,7 @@ import { toast } from "react-toastify"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import authService from "../services/authService"
 import { AxiosError } from "axios"
-import { ILogin, IUser } from "../types/index"
+import { ILogin, IPhone, IUser, IUserId } from "../types/index"
 
 // Login Action
 export const login = createAsyncThunk<IUser, ILogin, { rejectValue: string }>(
@@ -24,22 +24,22 @@ export const login = createAsyncThunk<IUser, ILogin, { rejectValue: string }>(
   }
 )
 
-// Check User Action
-export const checkUser = createAsyncThunk<
-  ILogin,
-  ILogin,
-  { rejectValue: string }
->("auth/checkUser", async (userData: ILogin, thunkAPI) => {
-  try {
-    const response = await authService.checkUser(userData)
-    if (response) {
-      toast.error("Данный пользователь уже зарегистрирован")
+// Phone Action
+export const phone = createAsyncThunk<IUserId, IPhone, { rejectValue: string }>(
+  "auth/phone",
+  async (userData: IPhone, thunkAPI) => {
+    try {
+      const response = await authService.phone(userData)
+      if (response) {
+        toast.success("Номер телефона подтвержден")
+      }
+      return response
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        toast.error("Данный номер телефона не зарегистрирован")
+        return thunkAPI.rejectWithValue(error.message)
+      }
+      throw error
     }
-    return response
-  } catch (error: unknown) {
-    if (error instanceof AxiosError) {
-      return thunkAPI.rejectWithValue(error.message)
-    }
-    throw error
   }
-})
+)

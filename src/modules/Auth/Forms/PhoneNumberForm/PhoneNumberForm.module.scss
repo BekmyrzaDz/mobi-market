@@ -64,44 +64,9 @@ $error-color: #f34545;
       align-items: center;
       height: 61px;
       margin-bottom: 24px;
-
-      &Input {
-        width: 234px;
-        border: none;
-        outline: none;
-        font-family: Inter;
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 34px; /* 121.429% */
-        text-align: center;
-
-        &::placeholder {
-          @include Typography();
-          color: $grey-color;
-          font-size: 28px;
-          font-weight: 700;
-          line-height: 34px;
-          text-align: center;
-        }
-      }
-
-      &InputError {
-        @include Typography();
-        font-size: 17px;
-        color: $error-color;
-        margin-top: 5px;
-        text-align: center;
-      }
-
-      &InputDefault {
-        width: 100%;
-        height: 22px;
-        margin-bottom: 51px;
-      }
     }
 
-    &ButtonDefault {
+    &DefaultButton {
       width: 100%;
       height: 65px;
       border-radius: 16px;

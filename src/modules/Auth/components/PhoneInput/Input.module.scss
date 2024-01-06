@@ -1,0 +1,39 @@
+$grey-color: #c0c0c0;
+$error-color: #f34545;
+
+@mixin Typography {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+}
+
+.input {
+  width: 234px;
+  border: none;
+  outline: none;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px; /* 121.429% */
+  text-align: center;
+
+  &::placeholder {
+    @include Typography();
+    color: $grey-color;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 34px;
+    text-align: center;
+  }
+}
+
+.error {
+  @include Typography();
+  font-size: 17px;
+  color: $error-color;
+  margin-top: 5px;
+  text-align: center;
+}

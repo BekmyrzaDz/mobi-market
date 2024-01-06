@@ -9,6 +9,11 @@ export interface IPhone {
   phone: string
 }
 
+// User id
+export interface IUserId {
+  id: string
+}
+
 // User (auth)
 export interface IUser {
   first_name: string
@@ -23,6 +28,7 @@ export interface IUser {
 // Redux auth state
 export interface IAuthState {
   user: IUser | null
+  userId: IUserId | null
   isLoading: boolean
   isSuccess: boolean
   isError: boolean

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { login } from "./asyncActions"
-import { IAuthState, IUser } from "../types/index"
+import { login, phone } from "./asyncActions"
+import { IAuthState, IUser, IUserId } from "../types/index"
 
 // Get user from localStorage
 const userString = localStorage.getItem("user")
@@ -9,8 +9,16 @@ if (userString !== null) {
   user = JSON.parse(userString) as IUser
 }
 
+// Get user id from localStorage
+const userIdString = localStorage.getItem("id")
+let userId
+if (userIdString !== null) {
+  userId = JSON.parse(userIdString) as IUserId
+}
+
 const initialState: IAuthState = {
   user: user ? user : null,
+  userId: userId ? userId : null,
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -40,6 +48,19 @@ export const authSlice = createSlice({
         state.isLoading = false
         state.isError = true
         state.user = null
+      })
+      .addCase(phone.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(phone.fulfilled, (state, action: PayloadAction<IUserId>) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.userId = action.payload
+      })
+      .addCase(phone.rejected, (state) => {
+        state.isLoading = false
+        state.isError = true
+        state.userId = null
       })
   },
 })
