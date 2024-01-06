@@ -10,3 +10,10 @@ export const loginSchema = Yup.object().shape({
     .min(8, "Пароль должен содержать не менее 8 символов")
     .required("Обязательное поле"),
 })
+
+// Phone Schema
+export const phoneSchema = Yup.object().shape({
+  phone: Yup.string()
+    .matches(/^0\(\d{3}\) \d{3} \d{3}$/, "Введите правильный номер телефона")
+    .required("Обязательное поле"),
+})

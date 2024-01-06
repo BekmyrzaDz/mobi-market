@@ -1,0 +1,117 @@
+$grey-color: #c0c0c0;
+$grey-2-color: #9ca4ab;
+$grey-light-color: #f7f7f8;
+$blue-color: #5458ea;
+$white-color: #fff;
+$error-color: #f34545;
+
+@mixin Typography {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+}
+
+.modal {
+  width: 335px;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &Title {
+    @include Typography();
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 42px;
+  }
+
+  &Icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 32px;
+  }
+
+  &PhoneTitle {
+    @include Typography();
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  &PhoneText {
+    @include Typography();
+    font-size: 16px;
+    font-weight: 400;
+    color: $grey-color;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+
+    &Wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 61px;
+      margin-bottom: 24px;
+
+      &Input {
+        width: 234px;
+        border: none;
+        outline: none;
+        font-family: Inter;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 34px; /* 121.429% */
+        text-align: center;
+
+        &::placeholder {
+          @include Typography();
+          color: $grey-color;
+          font-size: 28px;
+          font-weight: 700;
+          line-height: 34px;
+          text-align: center;
+        }
+      }
+
+      &InputError {
+        @include Typography();
+        font-size: 17px;
+        color: $error-color;
+        margin-top: 5px;
+        text-align: center;
+      }
+
+      &InputDefault {
+        width: 100%;
+        height: 22px;
+        margin-bottom: 51px;
+      }
+    }
+
+    &ButtonDefault {
+      width: 100%;
+      height: 65px;
+      border-radius: 16px;
+      background-color: $grey-light-color;
+      color: $grey-2-color;
+    }
+
+    &Button {
+      background: $blue-color;
+      color: $white-color;
+    }
+  }
+}

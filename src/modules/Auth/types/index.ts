@@ -4,6 +4,11 @@ export interface ILogin {
   password: string
 }
 
+// Phone
+export interface IPhone {
+  phone: string
+}
+
 // User (auth)
 export interface IUser {
   first_name: string

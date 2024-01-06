@@ -5,7 +5,7 @@ export interface InputProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  label: string
+  label?: string
   name: string
   icon?: string
   passwordIcon?: string

@@ -2,21 +2,23 @@ import { useState } from "react"
 import { Form, Formik } from "formik"
 import clsx from "clsx"
 import { Link } from "react-router-dom"
-import { eye } from "../../../assets"
-import { eyeDisable } from "../../../assets"
+import { eye, eyeDisable } from "../../../assets"
 import styles from "./Login.module.scss"
-import { Button, Input } from "../../../components"
+import { Button, Input, Modal } from "../../../components"
 import { loginState } from "../State/State"
 import { loginSchema } from "../Schema/Validation"
 import { ILogin } from "../types"
 import { useAppDispatch } from "../../../hooks/redux"
 import { login } from "../redux/asyncActions"
+import { PhoneNumberForm } from "../Forms"
 
 export const Login = () => {
   const dispatch = useAppDispatch()
 
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const toggleShowPassword = (): void => setShowPassword(!showPassword)
+
+  const [open, setOpen] = useState<boolean>(false)
 
   function onSubmit(values: ILogin) {
     dispatch(login(values))
@@ -31,7 +33,7 @@ export const Login = () => {
           validationSchema={loginSchema}
           onSubmit={onSubmit}
           enableReinitialize={true}
-          validateOnChange={false}
+          validateOnChange={true}
         >
           {({ isValid, errors, touched, handleSubmit }) => (
             <Form className={styles.form} onSubmit={handleSubmit}>
@@ -52,9 +54,12 @@ export const Login = () => {
                 label="Пароль"
                 placeholder="Пароль"
               />
-              <Link className={styles.forgotPassLink} to={"/forgot-password"}>
+              <span
+                className={styles.forgotPassLink}
+                onClick={() => setOpen(!open)}
+              >
                 Забыли пароль
-              </Link>
+              </span>
               <Button
                 className={clsx({
                   [styles.loginDefaultButton]: true,
@@ -78,6 +83,11 @@ export const Login = () => {
           )}
         </Formik>
       </div>
+      {open && (
+        <Modal active={open} setActive={setOpen}>
+          <PhoneNumberForm />
+        </Modal>
+      )}
     </div>
   )
 }

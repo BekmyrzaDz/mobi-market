@@ -1,13 +1,10 @@
-import { IRegister, ILogin } from "../types"
+import { ILogin, IPhone } from "../types"
 
 export const loginState: ILogin = {
   username: "",
   password: "",
 }
 
-export const registerState: IRegister = {
-  username: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
+export const phoneState: IPhone = {
+  phone: "",
 }
